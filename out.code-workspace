@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "out",
+			"path": "../../../../eclipse-workspace/Lenet5/out"
+		},
+		{
+			"name": "lenet-5-test",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
