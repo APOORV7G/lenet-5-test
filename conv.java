@@ -63,6 +63,23 @@ public class conv extends readImg {
 
 	    return output;
 	}
+	
+	public static double[][][] Tanh(double[][][] matrix) {
+	    int depth = matrix.length;
+	    int rows = matrix[0].length;
+	    int cols = matrix[0][0].length;
+
+	    // Apply tanh function to each element of the matrix
+	    double[][][] result = new double[depth][rows][cols];
+	    for (int d = 0; d < depth; d++) {
+	        for (int i = 0; i < rows; i++) {
+	            for (int j = 0; j < cols; j++) {
+	                result[d][i][j] = Math.tanh(matrix[d][i][j]);
+	            }
+	        }
+	    }
+	    return result;
+	}
 
 
     public static void main(String[] args) throws IOException {
@@ -80,10 +97,12 @@ public class conv extends readImg {
 
     	// Perform first convolution
     	double[][][] output1 = convolution(input, bias);
+    	
+    	output1 = Tanh(output1);
 
     	// Perform second convolution on the output of the first convolution
     	double[][][] output = convolution(output1, bias);
-
+    	output = Tanh(output);
 
         // Print output
         for (int f = 0; f < output.length; f++) {
